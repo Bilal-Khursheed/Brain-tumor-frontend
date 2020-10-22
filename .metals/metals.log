@@ -1,0 +1,15 @@
+2020.10.22 15:29:07 INFO  started: Metals version 0.9.4 in workspace 'C:\Users\DELL\OneDrive - Higher Education Commission\Desktop\FYP backend algo\Brain tumor frontend' for client vscode.
+2020.10.22 15:29:10 INFO  time: initialize in 3.31s
+2020.10.22 15:29:19 WARN  no build tool detected in workspace 'C:\Users\DELL\OneDrive - Higher Education Commission\Desktop\FYP backend algo\Brain tumor frontend'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 22, 2020 7:05:56 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 22, 2020 7:06:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 22, 2020 7:07:17 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 22, 2020 7:07:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 22, 2020 7:07:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 22, 2020 7:07:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification

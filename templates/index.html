@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+{% if file_name %}
+<script type="text/javascript">
+   
+    function picture(){ 
+    var pic = "static/uploads1/withoutskull.gif";
+    document.getElementById('bigpic').src = pic;
+
+    }
+
+    function picture1(){ 
+
+       
+   
+    var pic = "static/uploads/seg.gif"
+    var legend = "static/uploads/legend.png"
+    document.getElementById('segpic').src = pic;
+    document.getElementById('legpic').src = legend;
+
+    }
+</script>
+{% endif %}
+<style>
+.form_{
+   float: left;
+   padding-left: 10px;
+    }
+    .rotateimg90 {
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+    .button {
+  border-radius: 4px;
+  background-color: rgb(68, 173, 187);
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 115px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 10px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+ 
+.transbox {
+  position: absolute;
+  left: -10;
+  margin: 1px;
+  height: 500px;
+  width: 950px;
+  z-index: -1;
+  background-color: rgb(59, 55, 55);
+  border: 2px solid black;
+  opacity: 0.4;
+}
+
+</style>
+
+  <div style="position: relative;top: 0px;left: 40px; " >
+    
+      <form action="{{ url_for('index') }}" style="padding-left: 5px;"   enctype="multipart/form-data" method="POST">
+        {{ form.csrf_token }}
+        <div class="row">
+        <div style ="padding-top: 20px; "class="col-sm-6 form-group">
+          <label style="color: rgb(68, 173, 187); padding-top: 40px;"> Image </label>
+          <br>
+              <input style=" color: rgb(68,173,187);" id="image" type="file" name="photo" >
+          </br>
+          
+
+          {% for error in form.photo.errors %}
+              <small class="text-danger">{{ error }}</small>  
+          {% endfor %}
+        </div>
+        <div class="container" class="row " style="float: left;" >
+            <button class="button" ><span>Upload</span></button>
+        </div>
+      </div>
+      </form>
+      
+  </div>
+
+  {%set img_path = uploads1_dir ~ "\withskull.gif"%}
+  {% if file_name %}
+      <div class="form_"> 
+        
+          <img style="padding-left: 50px;" src={{img_path}}> 
+          
+      </div> 
+  {% endif %}
+
+  {% if file_name %}
+  <div  style = "position:relative; left:10px; top:0px; ">
+    <div class="form_ "> <img   id="bigpic" src="bigpic" ></div>
+  </div>
+  {% endif %}
+
+  {% if file_name %}
+  <div style = "position:relative; left:20px; top:0px; ">
+    <div class="form_"> <img height="200" width="229" id="segpic" src="segpic" ></div>
+  </div>
+  {% endif %}
+
+  {% if file_name %}
+  <div style = "position:relative; left:30px; top:0px; ">
+    <div class="form_"  > <img height="150" width="150" id="legpic" src="legpic" ></div>
+  </div>
+  {% endif %}
+
+  {% endblock %}
+  {% block footer %}
+
+  <div style = "position:relative; left:155px; top:20px;float: left; ">
+      <button class="button" onclick="picture()"  style="padding-left:10px; padding-right:5px ;" ><span> Strip </span></button>
+      <button class="button" onclick="picture1()" style="padding-right:10px"  ><span> Segmentation </span></button>
+      
+  </div>
+ 
+{% endblock %}

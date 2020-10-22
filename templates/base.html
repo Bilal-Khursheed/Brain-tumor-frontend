@@ -1,0 +1,158 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Flasky {% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<style> 
+   
+    
+    .animate {
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+        padding-top: 5px; padding-bottom: 5px;
+        color:rgb(138, 119, 94);
+        animation: example 5s infinite alternate-reverse;
+    }
+    
+    
+    @keyframes example {
+        0%   {background-color: rgb(255, 255, 255);}
+        50%  {background-color: rgb(177, 223, 213);}
+        100%  {background-color: rgb(202, 186, 199);}
+        
+    }
+
+    #loader{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #21242d url('https://cssauthor.com/wp-content/uploads/2018/06/Bouncy-Preloader.gif') no-repeat center center;
+	z-index: 999;
+    
+}
+
+.ml2 {
+  font-weight: 900;
+  font-size: 3.5em;
+  color: aliceblue;
+  text-align: center;
+  padding: 100px;
+  
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+    </style>
+<!--<div  class="animate" >
+<h2> Slosh AI Solutions </h2>
+</div>-->
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Flasky</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block body %}
+<style>
+  .topright {
+  position: absolute;
+  top: 0px;
+  right: 13px;
+  font-size: 18px;
+}
+
+    .mydiv{
+    position: relative;
+    z-index: 1;
+    }
+    .mydiv .bg{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('/static/uploads/23627.jpg'); 
+    background-size: cover; 
+    height: 100vh;
+    width: 100vw;
+    opacity: 1;
+    }
+</style>
+
+
+<div id="loader">
+    <h1  class="ml2" > Please wait....loading</h1> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</div>   
+
+
+<div  class="mydiv">
+    <img class="topright" src="static/uploads/SLOSH_LOGO_FINALL.png" height="230" width=300  > 
+    <div class="bg" >
+       
+     </div>    
+       {% block content %}
+   
+            <div class="container">
+                {% block page_content %}{% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block scripts %}
+            {{ super() }}
+            {{ moment.include_moment() }}
+        {% endblock %}
+        {% block footer %} {% endblock %} 
+       
+</div> 
+<script>
+    var preloader = document.getElementById('loader');
+    function preLoaderHandler(){
+        preloader.style.display = 'none';
+    }
+    var textWrapper = document.querySelector('.ml2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    
+    anime.timeline({loop: true})
+      .add({
+        targets: '.ml2 .letter',
+        scale: [4,1],
+        opacity: [0,1],
+        translateZ: 0,
+        easing: "easeOutExpo",
+        duration: 950,
+        delay: (el, i) => 70*i
+      }).add({
+        targets: '.ml2',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      });
+    
+    setTimeout(() => {  preLoaderHandler(); }, 3000);
+
+  </script>
+{% endblock %}

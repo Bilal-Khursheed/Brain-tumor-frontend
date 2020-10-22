@@ -1,0 +1,17 @@
+{
+  "name": "braintumor",
+  "version": "1.0.0",
+  "description": "this is the nodejs project to work for brain algo and to call it and perform work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bilal Khursheed",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.5"
+  }
+}
